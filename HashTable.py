@@ -34,13 +34,23 @@ class HashTable:
     distance = ord(first_letter) - ord("a")
     index = distance % self.size
 
+    return index
+
 
   # 3️⃣ TODO: Complete the insert method.
 
   # Should insert a key value pair into the hash table, where the key is the word and the value is a counter for the number of times the word appeared. When inserting a new word in the hash table, be sure to check if there is a Node with the same key in the table already.
 
   def insert(self, key, value):
-    pass
+    
+    index = self.hash_func(key)
+    linked_list = self.arr[index]
+
+    if linked_list.find(key) == -1:
+      linked_list.append(key, value)
+
+    else:
+      linked_list.update(key, value)
 
 
 
