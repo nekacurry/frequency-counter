@@ -43,14 +43,15 @@ class HashTable:
 
   def insert(self, key, value):
     
-    index = self.hash_func(key)
+    new_word = (key, value)
+    index = self.hash_func(new_word[0])
     linked_list = self.arr[index]
 
     if linked_list.find(key) == -1:
-      linked_list.append(key, value)
+      linked_list.append(new_word)
 
     else:
-      linked_list.update(key, value)
+      linked_list.update(key)
 
 
 
@@ -67,7 +68,9 @@ class HashTable:
   # erase: 2
 
   def print_key_values(self):
-    pass
+    
+    for linked_list in self.arr:
+      linked_list.print_nodes()
 
 
 
