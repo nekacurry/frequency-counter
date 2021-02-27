@@ -14,7 +14,12 @@ class HashTable:
 
   def create_arr(self, size):
      
-    pass
+    new_list = []
+
+    for i in range(size):
+      new_list.append(LinkedList())
+
+    return new_list
 
 
 
@@ -25,7 +30,9 @@ class HashTable:
 
   def hash_func(self, key):
     
-    pass
+    first_letter = key[0].lower()
+    distance = ord(first_letter) - ord("a")
+    index = distance % self.size
 
 
   # 3️⃣ TODO: Complete the insert method.
