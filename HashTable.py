@@ -80,7 +80,7 @@ class HashTable:
 
       node = ll.head
       while node != None:
-        print(node.data)
+        print(f'{node.data[0]} : {node.data[1]}\n')
         node = node.next
 
 
