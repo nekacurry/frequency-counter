@@ -30,10 +30,11 @@ class HashTable:
 
   def hash_func(self, key):
     
-    first_letter = key[0].lower()
-    distance = ord(first_letter) - ord("a")
-    index = distance % self.size
-
+    count = 0
+    length = len(self.arr)
+    for i in key:
+      count = ord(i)
+    index = count % length
     return index
 
 
@@ -43,15 +44,19 @@ class HashTable:
 
   def insert(self, key, value):
     
-    new_word = (key, value)
-    index = self.hash_func(new_word[0])
-    linked_list = self.arr[index]
+    new_word = [key , value]
+    index = self.hash_func(key)
 
-    if linked_list.find(key) == -1:
-      linked_list.append(new_word)
+    linked_list = self.arr[index].head
 
-    else:
-      linked_list.update(key)
+    while linked_list != None:
+      if linked_list.data[0] == key:
+          linked_list.data[1] += value
+          return
+      else:
+          linked_list = linked_list.next
+
+    self.arr[index].append(new_word)
 
 
 
@@ -69,8 +74,14 @@ class HashTable:
 
   def print_key_values(self):
     
-    for linked_list in self.arr:
-      linked_list.print_nodes()
+    for ll in self.arr:
+      if ll.head:
+        pass
+
+      node = ll.head
+      while node != None:
+        print(node.data)
+        node = node.next
 
 
 
